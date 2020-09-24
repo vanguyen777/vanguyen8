@@ -15,7 +15,9 @@ ip a | grep -F "state" | cut -d ' ' -f 2 | tr -d ':'
 
 #(d) IP address, broadcast, and netmask for each active device
 # this command currently prints all IP addresses, netmasks for active devices. Address and netmask are unseparated
-ip a | grep -F "inet" | cut -d ' ' -f 6
+# if use grep -F " inet" will show both v4 and v6 interfaces
+ip a | grep -w "inet" | cut -d ' ' -f 6-8 | grep "brd"
+#this command also prints broadcast address for active IPv4 interfaces
 
 #(e) OS version/release level, kernel version used
 
