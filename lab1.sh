@@ -3,12 +3,13 @@
 #Bash script that does lab 1's task including
 
 #(a) Hostname
-cat /etc/hostname
+echo "Hostname:" $(hostname)
 
 #(b) disk/partition size, usage, and mount points
 #this command gets disk, partition names, size in 1M blocks, used, available, use% and mount point
-df -BM | grep -F "/dev/sda"
-
+disk_info=$(df -BM | grep -F "/dev/sda")
+headline=$(df -BM | head -1)
+echo "$headline" $'\n' "$disk_info"
 
 #c) network devices (name)
 ip a | grep -F "state" | cut -d ' ' -f 2 | tr -d ':'
