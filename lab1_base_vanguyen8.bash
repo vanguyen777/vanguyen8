@@ -40,7 +40,7 @@ sestatus | head -1
 #(g) firewall configuration
 #user either firewall-cmd or iptables
 echo "Firewall configuration" 
-firewall-cmd --list-all
+iptables -L
 echo " "
 
 #(h) list of active repositories
