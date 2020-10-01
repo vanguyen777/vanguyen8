@@ -1,3 +1,4 @@
+SESTATUS:
 SELinux status:                 enabled
 SELinuxfs mount:                /sys/fs/selinux
 SELinux root directory:         /etc/selinux
@@ -8,6 +9,8 @@ Policy MLS status:              enabled
 Policy deny_unknown status:     allowed
 Memory protection checking:     actual (secure)
 Max kernel policy version:      31
+
+IP ADDR
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -28,6 +31,8 @@ Max kernel policy version:      31
        valid_lft forever preferred_lft forever
 4: ens256: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 00:0c:29:0f:74:c3 brd ff:ff:ff:ff:ff:ff
+
+IP ROUTE
 default via 172.17.255.1 dev ens192 proto dhcp metric 102 
 172.17.0.0/16 dev ens192 proto kernel scope link src 172.17.18.1 metric 102 
 192.168.2.0/24 via 172.17.18.1 dev ens192 proto static metric 102 
@@ -40,6 +45,7 @@ Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
     0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:22
 98107   30M REJECT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
 
+IPTABLES -L -v -n
 Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination         
    24  2016 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
