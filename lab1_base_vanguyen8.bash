@@ -1,5 +1,44 @@
 #!/bin/bash
 
+# Lab 1 script updated for lab 3
+echo "SPR500 Lab 3 Report"
+echo "Full name: Viet Anh Nguyen"
+echo "User name: vanguyen8"
+echo "Student ID: 151939188"
+echo " "
+
+# Routing table on VM2
+echo "VM2 routing table:"
+ip route
+echo " "
+
+#http server is running on port 80
+echo "http server port 80"
+systemctl status httpd | grep -F "listening"
+echo " "
+
+# Current size of log files
+echo "Current size of log files:"
+pushd /var/log
+ls -l messages boot.log maillog secure wtmp btmp lastlog dnf.log
+popd
+echo " "
+
+#Num active services on VM2
+echo "Number of active services on VM2:"
+systemctl list-unit-files | grep enabled | wc -l
+echo " "
+
+#Current firewall rules
+echo "Current firewall rules:"
+iptables -L -n -v
+echo " "
+
+#Sestatus
+echo "Sestatus:"
+sestatus
+echo " "
+
 #Bash script that does lab 1's task including
 
 #(a) Hostname
@@ -38,7 +77,7 @@ echo "Security/SELinux status:"
 sestatus | head -1
 
 #(g) firewall configuration
-#user either firewall-cmd or iptables
+#user either firewall-cmd or iptables ( in this scenario we disabled firewalld)
 echo "Firewall configuration" 
 iptables -L
 echo " "
